@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using these metadata."
+type: software
+title: "Rhythm units"
+abstract: "Period, frequency and bpm conversions, with Lean 4 proofs that speeding time up scales every frequency by the same factor and keeps every ratio."
+authors:
+  - given-names: "Chethan"
+    family-names: "Dandebala Venkatarama"
+    alias: "chethandvg"
+    orcid: "https://orcid.org/0009-0006-6099-343X"
+repository-code: "https://github.com/chethandvg/rhythm-units"
+url: "https://chethandvg.github.io/frequencies-of-life/repos/rhythm-units/"
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-11-07"
+keywords:
+  - rhythm
+  - frequency
+  - lean4
+  - formal-verification
+  - sonification
+  - bpm

@@ -1,0 +1,353 @@
+{
+  "schema": "golden-vectors@1",
+  "description": "Period, frequency and bpm conversions and time scaling, computed exactly.",
+  "tolerance": {
+    "rel": 1e-15,
+    "abs": 0.0
+  },
+  "cases": [
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period",
+      "args": [
+        1.0
+      ],
+      "expected": 1.0,
+      "note": "one cycle per second is 1 Hz"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period",
+      "args": [
+        0.5
+      ],
+      "expected": 2.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period",
+      "args": [
+        600.0
+      ],
+      "expected": 0.0016666666666666668,
+      "note": "a 10-minute period, in seconds"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period",
+      "args": [
+        86400.0
+      ],
+      "expected": 1.1574074074074073e-05,
+      "note": "one day"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "period_from_hz",
+      "args": [
+        2.0
+      ],
+      "expected": 0.5
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "period_from_hz",
+      "args": [
+        440.0
+      ],
+      "expected": 0.0022727272727272726,
+      "note": "concert A"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "period_from_hz",
+      "args": [
+        0.0016666666666666668
+      ],
+      "expected": 600.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period_minutes",
+      "args": [
+        10.0
+      ],
+      "expected": 0.0016666666666666668,
+      "note": "10-minute period"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period_minutes",
+      "args": [
+        35.0
+      ],
+      "expected": 0.0004761904761904762,
+      "note": "35-minute period"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_period_minutes",
+      "args": [
+        0.016666666666666666
+      ],
+      "expected": 1.0,
+      "note": "one second, expressed in minutes"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "bpm_from_hz",
+      "args": [
+        1.0
+      ],
+      "expected": 60.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "bpm_from_hz",
+      "args": [
+        19.0
+      ],
+      "expected": 1140.0,
+      "note": "19 beats a second"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "bpm_from_hz",
+      "args": [
+        0.0016666666666666668
+      ],
+      "expected": 0.1,
+      "note": "a 10-minute rhythm is 0.1 beats per minute"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_bpm",
+      "args": [
+        60.0
+      ],
+      "expected": 1.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_bpm",
+      "args": [
+        72.0
+      ],
+      "expected": 1.2
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "hz_from_bpm",
+      "args": [
+        176.0
+      ],
+      "expected": 2.933333333333333
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_frequency",
+      "args": [
+        0.0016666666666666668,
+        180.0
+      ],
+      "expected": 0.30000000000000004,
+      "note": "a 10-minute rhythm sped up 180 times: 0.3 Hz"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_frequency",
+      "args": [
+        19.0,
+        16.0
+      ],
+      "expected": 304.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_frequency",
+      "args": [
+        0.0016666666666666668,
+        262144.0
+      ],
+      "expected": 436.9066666666667,
+      "note": "18 octaves up: 436.91 Hz"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_frequency",
+      "args": [
+        440.0,
+        0.5
+      ],
+      "expected": 220.0,
+      "note": "k below 1 slows time down"
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_period",
+      "args": [
+        600.0,
+        180.0
+      ],
+      "expected": 3.3333333333333335
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "scale_period",
+      "args": [
+        1.0,
+        1.0
+      ],
+      "expected": 1.0
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "speedup_for",
+      "args": [
+        0.0016666666666666668,
+        0.3
+      ],
+      "expected": 179.99999999999997
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "speedup_for",
+      "args": [
+        440.0,
+        220.0
+      ],
+      "expected": 0.5
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "ratio",
+      "args": [
+        12.2,
+        4.3
+      ],
+      "expected": 2.8372093023255816
+    },
+    {
+      "claim": "rhythm:IMPLEMENTATIONS-AGREE",
+      "fn": "ratio",
+      "args": [
+        880.0,
+        440.0
+      ],
+      "expected": 2.0
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "hz_from_period",
+      "args": [
+        0.0
+      ],
+      "error": true,
+      "note": "a period must be positive"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "hz_from_period",
+      "args": [
+        -600.0
+      ],
+      "error": true,
+      "note": "negative period"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "period_from_hz",
+      "args": [
+        0.0
+      ],
+      "error": true,
+      "note": "zero frequency"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "hz_from_period_minutes",
+      "args": [
+        -1.0
+      ],
+      "error": true,
+      "note": "negative minutes"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "bpm_from_hz",
+      "args": [
+        -1.0
+      ],
+      "error": true,
+      "note": "negative frequency"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "hz_from_bpm",
+      "args": [
+        0.0
+      ],
+      "error": true,
+      "note": "zero bpm"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "scale_frequency",
+      "args": [
+        440.0,
+        0.0
+      ],
+      "error": true,
+      "note": "k must be positive"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "scale_frequency",
+      "args": [
+        440.0,
+        -2.0
+      ],
+      "error": true,
+      "note": "negative k"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "scale_period",
+      "args": [
+        600.0,
+        0.0
+      ],
+      "error": true,
+      "note": "k must be positive"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "speedup_for",
+      "args": [
+        0.0,
+        440.0
+      ],
+      "error": true,
+      "note": "cannot speed up from 0 Hz"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "ratio",
+      "args": [
+        440.0,
+        0.0
+      ],
+      "error": true,
+      "note": "division by zero"
+    },
+    {
+      "claim": "rhythm:INPUT-VALIDATION",
+      "fn": "hz_from_period",
+      "args": [
+        1e-310
+      ],
+      "error": true,
+      "note": "the result would overflow to infinity"
+    }
+  ]
+}

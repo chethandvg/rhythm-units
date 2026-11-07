@@ -1,0 +1,25 @@
+[build-system]
+requires = ["maturin>=1.16,<2"]
+build-backend = "maturin"
+
+[project]
+name = "rhythm-units"
+version = "0.1.0"
+description = "Period, frequency and bpm conversions, with Lean 4 proofs that speeding time up scales every frequency by the same factor and keeps every ratio."
+readme = "README.md"
+license = "Apache-2.0"
+authors = [{ name = "Chethan Dandebala Venkatarama" }]
+requires-python = ">=3.10"
+keywords = ["rhythm", "frequency", "lean4", "formal-verification", "sonification", "bpm"]
+classifiers = [
+  "Programming Language :: Rust",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://chethandvg.github.io/frequencies-of-life/repos/rhythm-units/"
+Repository = "https://github.com/chethandvg/rhythm-units"
+
+[tool.maturin]
+module-name = "rhythm_units"

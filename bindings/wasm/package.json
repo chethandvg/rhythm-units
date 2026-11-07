@@ -1,0 +1,22 @@
+{
+  "name": "@chethandvg/rhythm-units",
+  "version": "0.1.0",
+  "description": "Period, frequency and bpm conversions, with Lean 4 proofs that speeding time up scales every frequency by the same factor and keeps every ratio.",
+  "license": "Apache-2.0",
+  "author": "Chethan Dandebala Venkatarama",
+  "homepage": "https://chethandvg.github.io/frequencies-of-life/repos/rhythm-units/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chethandvg/rhythm-units.git",
+    "directory": "bindings/wasm"
+  },
+  "keywords": ["rhythm", "frequency", "lean4", "formal-verification", "sonification", "bpm"],
+  "private": true,
+  "scripts": {
+    "build": "cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --target nodejs --out-dir pkg/node target/wasm32-unknown-unknown/release/rhythm_units_wasm.wasm && wasm-bindgen --target web --out-dir pkg/web target/wasm32-unknown-unknown/release/rhythm_units_wasm.wasm",
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "devDependencies": {
+    "golden-vectors": "github:chethandvg/evidence-kernel#v0.1.0"
+  }
+}

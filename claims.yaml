@@ -1,0 +1,74 @@
+# Claims ledger for rhythm-units (schema evidence-kernel/claims@1, https://github.com/chethandvg/evidence-kernel).
+# Levels: P proved in Lean · V verified numerics · T tested · R referenced (DOI/PMID) · M model assumption.
+schema: evidence-kernel/claims@1
+repo: rhythm-units
+prefix: rhythm
+claims:
+  - id: rhythm:FREQ-PERIOD-INVERSE
+    version: 1.0.0
+    level: P
+    statement: "Frequency and period are inverses: converting a period to a frequency and back returns the original period."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.period_hz_roundtrip
+  - id: rhythm:FREQ-POSITIVE
+    version: 1.0.0
+    level: P
+    statement: "A positive period always has a positive frequency."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.hzFromPeriod_pos
+  - id: rhythm:BPM-HZ-INVERSE
+    version: 1.0.0
+    level: P
+    statement: "Beats per minute and hertz convert into each other without loss (bpm = 60 × f)."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.bpm_hz_roundtrip
+  - id: rhythm:MINUTES-AS-SECONDS
+    version: 1.0.0
+    level: P
+    statement: "A period of m minutes is the same rhythm as a period of 60 × m seconds."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.minutes_as_seconds
+  - id: rhythm:TIME-SCALING-PERIODIC
+    version: 1.0.0
+    level: P
+    statement: "If a signal repeats every T, the same signal sped up by a factor k repeats every T / k."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.time_scaling_periodic
+  - id: rhythm:TIME-SCALING-FREQUENCY
+    version: 1.0.0
+    level: P
+    statement: "Speeding time up by a factor k multiplies every frequency by k."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.time_scaling_frequency
+  - id: rhythm:SCALE-RATIO-INVARIANT
+    version: 1.0.0
+    level: P
+    statement: "Speeding time up by any non-zero factor leaves the ratio between any two frequencies unchanged."
+    depends_on: ["rhythm:TIME-SCALING-FREQUENCY@1"]
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.scale_ratio_invariant
+  - id: rhythm:SPEEDUP-FOR
+    version: 1.0.0
+    level: P
+    statement: "For any non-zero starting frequency, speedup_for gives exactly the factor that turns it into the target frequency."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.speedupFor_spec
+  - id: rhythm:TEN-MINUTES-HZ
+    version: 1.0.0
+    level: P
+    statement: "A rhythm with a 10-minute period has a frequency of exactly 1/600 Hz (about 1.67 mHz)."
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.ten_minutes_hz
+  - id: rhythm:TEN-MINUTES-SPED-UP-180
+    version: 1.0.0
+    level: P
+    statement: "Sped up 180 times, a 10-minute rhythm has a frequency of exactly 0.3 Hz: one beat every 3⅓ seconds."
+    depends_on: ["rhythm:TEN-MINUTES-HZ@1"]
+    proof: proofs/RhythmUnits/Basic.lean#RhythmUnits.ten_minutes_sped_up_180
+  - id: rhythm:IMPLEMENTATIONS-AGREE
+    version: 1.0.0
+    level: T
+    statement: "The Rust crate, the Python bindings and the WebAssembly bindings all match the exactly computed golden vectors to within a few units in the last place."
+    tests:
+      - vectors/conversions.json
+      - tests/vectors.rs
+      - bindings/python/tests/test_vectors.py
+      - bindings/wasm/tests/vectors.test.mjs
+  - id: rhythm:INPUT-VALIDATION
+    version: 1.0.0
+    level: T
+    statement: "All three implementations reject inputs that are zero, negative or not finite, and results that would overflow."
+    tests:
+      - vectors/conversions.json
+      - src/lib.rs
