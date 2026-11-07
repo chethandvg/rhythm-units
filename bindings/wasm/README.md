@@ -1,6 +1,6 @@
 # Rhythm units: WebAssembly bindings
 
-WebAssembly build of [rhythm-units](https://github.com/chethandvg/rhythm-units) for browsers and Node. Function names and results are identical to the Rust crate; the shared golden vectors prove it in CI.
+WebAssembly build of [rhythm-units](https://github.com/chethandvg/rhythm-units) for browsers and Node. Function names and results are identical to the Rust crate; the shared golden vectors check it in CI.
 
 ```bash
 npm install

@@ -9,7 +9,7 @@
 
 Part of **[Frequencies of Life](https://chethandvg.github.io/frequencies-of-life/)**, open code for the rhythms of life in which every claim says how it is known: proved, verified, tested, referenced or assumed.
 
-## What is proved
+## Claims and evidence
 
 <!-- claims-table:start -->
 | Claim | Level | Statement | Evidence |
@@ -50,7 +50,7 @@ pip install "git+https://github.com/chethandvg/rhythm-units@v0.1.0#subdirectory=
 ## How it is verified
 
 - **Proofs:** the Lean 4 files in [`proofs/`](proofs) prove the P-level claims about the mathematical functions. CI rebuilds them with Mathlib, rejects `sorry`, and allows only the standard axioms (`propext`, `Classical.choice`, `Quot.sound`).
-- **Implementation:** one Rust implementation, compiled to Python (PyO3) and WebAssembly. The same golden vectors in [`vectors/`](vectors) are checked in all three, on Linux and Windows.
+- **Implementation:** one Rust implementation, compiled to Python (PyO3) and WebAssembly. The same golden vectors in [`vectors/`](vectors) are checked in all three: Rust and Python on Linux and Windows, WebAssembly on Linux.
 - **What the proofs don't cover:** they are about exact real-number mathematics. The Rust code uses 64-bit floating point, so its rounding is checked by the golden-vector tolerances, not by the proofs.
 
 ## Cite
